@@ -6,7 +6,7 @@ function validateParams(request, response, next) {
     for (var _i = 0, requiredParams_1 = requiredParams; _i < requiredParams_1.length; _i++) {
         var param = requiredParams_1[_i];
         if (query[param] === undefined) {
-            response.status(400).send("Error:Please enter all parameters");
+            response.status(400).send("There was an error processing your image");
             return;
         }
         var value = query[param];

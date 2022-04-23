@@ -44,15 +44,14 @@ var fs_1 = __importDefault(require("fs"));
 var path_1 = __importDefault(require("path"));
 var utilities_1 = require("../utilities");
 var resizeImage = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, filename, height, width, imgformat, h, w, f, format, imageFormats, imagePath_1, resizePath, imagePathExists, response, error_1;
+    var _a, filename, height, width, h, w, f, imageFormats, imagePath_1, resizePath, imagePathExists, response, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _a = req.query, filename = _a.filename, height = _a.height, width = _a.width, imgformat = _a.imgformat;
+                _a = req.query, filename = _a.filename, height = _a.height, width = _a.width;
                 h = height ? parseInt(height, 10) : null;
                 w = width ? parseInt(width, 10) : null;
                 f = filename;
-                format = imgformat;
                 _b.label = 1;
             case 1:
                 _b.trys.push([1, 6, , 7]);
@@ -71,6 +70,7 @@ var resizeImage = function (req, res) { return __awaiter(void 0, void 0, void 0,
                 response.toFile(resizePath, function (error) {
                     if (error) {
                         res.status(403).send({
+                            ok: "failed",
                             message: error.message,
                         });
                     }

@@ -43,14 +43,14 @@ var supertest_1 = __importDefault(require("supertest"));
 var app_1 = __importDefault(require("../../app"));
 var request = (0, supertest_1.default)(app_1.default);
 describe("Resize Controller Middleware", function () {
-    it("should return an error is a parameter is missing", function () { return __awaiter(void 0, void 0, void 0, function () {
+    it("expect an error is a parameter is missing", function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get("/api/images")];
+                case 0: return [4 /*yield*/, request.get("/api/images/resize?")];
                 case 1:
                     response = _a.sent();
-                    expect(response.text).toBe("Error: Parameter(s) missing..");
+                    expect(response.text).toBe("There was an error processing your image");
                     return [2 /*return*/];
             }
         });
@@ -59,10 +59,10 @@ describe("Resize Controller Middleware", function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get("/api/images?filename=img1&width=NotNumber&height=400")];
+                case 0: return [4 /*yield*/, request.get("/api/images/resize?filename=img1&width=NotNumber&height=400")];
                 case 1:
                     response = _a.sent();
-                    expect(response.text).toBe("height and width should be numbers");
+                    expect(response.text).toBe("Height and width must be numbers");
                     return [2 /*return*/];
             }
         });
@@ -71,10 +71,10 @@ describe("Resize Controller Middleware", function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get("/api/images?filename=img1&width=notNumber&height=NotNumber")];
+                case 0: return [4 /*yield*/, request.get("/api/images/resize?filename=img1&width=notNumber&height=NotNumber")];
                 case 1:
                     response = _a.sent();
-                    expect(response.text).toBe("height and width should be numbers");
+                    expect(response.text).toBe("Height and width must be numbers");
                     done();
                     return [2 /*return*/];
             }
@@ -84,7 +84,7 @@ describe("Resize Controller Middleware", function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get("/api/images?filename=img1&width=string&height=string")];
+                case 0: return [4 /*yield*/, request.get("/api/images/resize?filename=img1&width=string&height=string")];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(400);
@@ -97,7 +97,7 @@ describe("Resize Controller Middleware", function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get("/api/images?filename=filenotFound&width=400&height=300")];
+                case 0: return [4 /*yield*/, request.get("/api/images/resize?filename=filenotFound&width=400&height=300")];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(403);

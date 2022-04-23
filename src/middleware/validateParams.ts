@@ -6,7 +6,7 @@ function validateParams(request: Request, response: Response, next: NextFunction
 
   for(let param of requiredParams ){
     if (query[param] === undefined) {
-          response.status(400).send("Error:Please enter all parameters");
+          response.status(400).send("There was an error processing your image");
           return;
         }
     

@@ -5,12 +5,12 @@ import { Response, Request } from "express";
 import { sharpResize, fileExisits } from "../utilities";
 
 const resizeImage = async (req: Request, res: Response): Promise<void> => {
-  const { filename, height, width,imgformat } = req.query;
+  const { filename, height, width } = req.query;
 
   const h: number | null = height ? parseInt(height as string, 10) : null;
   const w: number | null = width ? parseInt(width as string, 10) : null;
   const f: string = filename as unknown as string;
-  const format:string|null=imgformat  as unknown as string;
+  // const format:string|null=imgformat  as unknown as string;
 
   try {
     const imageFormats=["jpg","jpeg","png"];
@@ -29,6 +29,7 @@ const resizeImage = async (req: Request, res: Response): Promise<void> => {
       response.toFile(resizePath, (error: Error) => {
         if (error) {
           res.status(403).send({
+            ok:"failed",
             message: error.message,
           });
         } else {

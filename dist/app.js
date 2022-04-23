@@ -14,16 +14,16 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json({ type: "application/json" }));
 app.use(express_1.default.urlencoded({ extended: false }));
 app.get("/", function (_req, res) {
-    res.status(200).send("Welcome to Image Processing API");
+    res.status(200).send("Welcome to Udacity Image Processing API");
 });
-// // health check
-// app.get("/health", (_req: Request, res: Response): void => {
-//   res.send({
-//     uptime: process.uptime(),
-//     message: "OK",
-//     timestamp: Date.now(),
-//   });
-// });
+// health check
+app.get("/health", function (_req, res) {
+    res.send({
+        uptime: process.uptime(),
+        message: "OK",
+        timestamp: Date.now(),
+    });
+});
 app.use(routes_1.default);
 app.use(middleware_1.errorHandler);
 exports.default = app;
