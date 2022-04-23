@@ -32,12 +32,6 @@ Node 16.14.2
 ```
 
 
-## Install Server dependencies
-
-```
-  - npm run int
-```
-
 ### Testing
 
 ```
