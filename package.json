@@ -1,0 +1,54 @@
+{
+  "name": "image-processing-api",
+  "version": "1.0.0",
+  "description": "Image Processing API",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run build && npm run jasmine",
+    "jasmine": "jasmine",
+    "build": "npx tsc",
+    "lint": "eslint . --ext .ts",
+    "lint-fix": "eslint . --ext .ts --fix",
+    "dev": "nodemon src/index.ts",
+    "bulid": "npx tsc",
+    "start": "npm run bulid && node dist/index.js",
+    "prettier": "prettier --config .prettierrc './src/**/*.ts' --write"
+  }, 
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AsmaaHosnyAly/img-api.git"
+  },
+  "keywords": [],
+  "author": "Asmaa Hosny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AsmaaHosnyAly/img-api/issues"
+  },
+  "homepage": "https://github.com/AsmaaHosnyAly/img-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jasmine": "^3.7.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "morgan": "^1.10.0",
+    "sharp": "^0.28.3",
+    "supertest": "^6.1.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jasmine": "^3.10.6",
+    "@types/node": "^15.14.9",
+    "@types/sharp": "^0.28.6",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.3.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  }
+}
